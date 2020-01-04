@@ -16,6 +16,7 @@ export default {
       format: "esm"
     }
   ],
+  external: ["prismjs"],
   plugins: [
     shim({
       fs: "export {}",
