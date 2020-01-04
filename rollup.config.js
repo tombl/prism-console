@@ -32,6 +32,6 @@ export default {
       }
     }),
     typescript(),
-    terser()
+    ...(process.env.MINIFY === "true" ? [terser()] : [])
   ]
 };

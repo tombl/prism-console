@@ -8,3 +8,7 @@ export function tokenStreamToString(tokenStream: TokenStream): string {
     return tokenStreamToString(tokenStream.content);
   }
 }
+
+export function escapePercent(input: string) {
+  return input.replace(/%+/g, replace => "%".repeat(replace.length * 2));
+}
