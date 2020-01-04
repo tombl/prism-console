@@ -1,6 +1,8 @@
-# `prism-console`
+# prism-console
 
-> [Prism](https://www.npmjs.com/package/prismjs) but outputs to the browser console.
+> [Prism](https://prismjs.com) but outputs to the browser console.
+
+prism-console uses the syntax highlighter [Prism](https://prismjs.com) to highlight source code, and output this highlighted code to the browser console.
 
 ## Example
 
