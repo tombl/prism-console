@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "target": "es2015"
+  },
+  "include": ["src/**/*"]
+}

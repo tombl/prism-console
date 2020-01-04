@@ -1,0 +1,5 @@
+.nyc_output
+cjs
+esm
+node_modules
+tsconfig.tsbuildinfo
