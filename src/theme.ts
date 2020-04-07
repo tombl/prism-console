@@ -2,7 +2,7 @@ import * as css from "css";
 
 export interface Theme {
   textColor: string | null;
-  tokens: Map<string, string>;
+  tokens: Map<string, Array<{ property: string; value: string }>>;
 }
 
 /**
@@ -10,31 +10,38 @@ export interface Theme {
  * @param stylesheet The CSS source for the Prism theme
  */
 export function generateTheme(stylesheet: string): Theme {
-  const tokens = new Map<string, string>();
+  const tokens = new Map<string, Array<{ property: string; value: string }>>();
   let textColor: string | null = null;
   (css
     .parse(stylesheet)
-    .stylesheet!.rules.filter(
+    .stylesheet?.rules.filter(
       ({ type }) => type === "rule"
     ) as css.Rule[]).forEach(({ declarations, selectors }) => {
-    selectors!.forEach(selector => {
+    selectors?.forEach((selector) => {
       if (selector === `code[class*="language-"]`) {
         textColor =
-          (declarations!.filter(
+          (declarations?.filter(
             ({ type }) => type === "declaration"
           ) as css.Declaration[]).filter(
             ({ property }) => property === "color"
           )[0]?.value ?? null;
       }
       const classes = selector.split(".").slice(1);
-      if (classes.indexOf("token") !== -1 && classes.length === 2) {
+      if (classes.includes("token") && classes.length === 2) {
         tokens.set(
-          classes.filter(className => className !== "token")[0],
-          (declarations!.filter(
+          classes.filter((className) => className !== "token")[0],
+          (declarations?.filter(
             ({ type }) => type === "declaration"
           ) as css.Declaration[])
-            .map(({ property, value }) => `${property}:${value}`)
-            .join(";")
+            .filter(
+              (rule) => rule.property !== undefined && rule.value !== undefined
+            )
+            .map(({ property, value }) => ({
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              property: property!,
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              value: value!,
+            }))
         );
       }
     });

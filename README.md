@@ -33,7 +33,13 @@ console.log(
 );
 ```
 
-![syntax highlighted code](https://raw.githubusercontent.com/tomblcode/prism-console/master/example.png)
+![syntax highlighted code](https://raw.githubusercontent.com/tomblcode/prism-console/master/example/terminal.png)
+
+<center><i>in the terminal</i></center>
+
+![syntax highlighted code](https://raw.githubusercontent.com/tomblcode/prism-console/master/example/browser.png)
+
+<center><i>in the browser</i></center>
 
 ## API
 
