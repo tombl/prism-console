@@ -10,27 +10,13 @@ The following code, when run in a browser, displays the output in this image in 
 
 ```javascript
 import { generateTheme, highlight } from "prism-console";
-import Prism from "prismjs";
+import Prismjs from "prismjs";
 
 const theme = generateTheme(...);
 
-console.log(
-  ...highlight(
-    `import { generateTheme, highlight } from "prism-console"`,
-    Prism.languages.javascript,
-    theme
-  )
-);
+const code = `var x = console.log("test");`;
 
-console.log(
-  ...highlight(
-    `.token.deleted {
-  color: red;
-}`,
-    Prism.languages.css,
-    theme
-  )
-);
+console.log(...highlight(code, Prismjs.languages.javascript, theme));
 ```
 
 ![syntax highlighted code](https://raw.githubusercontent.com/tomblcode/prism-console/master/example/terminal.png)

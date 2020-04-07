@@ -1,4 +1,4 @@
-const { languages } = require("prismjs");
+const Prismjs = require("prismjs");
 const { generateTheme, highlight } = require("../cjs");
 const { readFileSync } = require("fs");
 
@@ -11,4 +11,4 @@ const theme = generateTheme(
 
 const code = `var x = console.log("test");`;
 
-console.log(...highlight(code, languages.javascript, theme));
+console.log(...highlight(code, Prismjs.languages.javascript, theme));
